@@ -1,0 +1,22 @@
+{
+    "QUALITY_LOW" :
+    {
+        "Resolution" : "RES_EIGH",
+        "Filtering" : "Disable"
+    },
+    "QUALITY_MEDIUM" :
+    {
+        "Resolution" : "RES_QUAT",
+        "Filtering" : "Disable"
+    },
+    "QUALITY_HIGH" :
+    {
+        "Resolution" : "RES_HALF",
+        "Filtering" : "Enable"
+    },
+    "QUALITY_VERY_HIGH" :
+    {
+        "Resolution" : "RES_FULL",
+        "Filtering" : "Enable"
+    }
+}

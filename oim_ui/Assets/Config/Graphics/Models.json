@@ -1,0 +1,38 @@
+{
+    "QUALITY_VERY_LOW" :
+    {
+        "MSAA_Level" : "NO_MSAA",
+        "LODBias" : 0.3,
+        "MaxLODLevel" : 0
+    },
+    "QUALITY_LOW" :
+    {
+        "MSAA_Level" : "NO_MSAA",
+        "LODBias" : 0.4,
+        "MaxLODLevel" : 0
+    },
+    "QUALITY_MEDIUM" :
+    {
+        "MSAA_Level" : "NO_MSAA",
+        "LODBias" : 0.7,
+        "MaxLODLevel" : 0
+    },
+    "QUALITY_HIGH" :
+    {
+        "MSAA_Level" : "NO_MSAA",
+        "LODBias" : 1,
+        "MaxLODLevel" : 0
+    },
+    "QUALITY_VERY_HIGH" :
+    {
+        "MSAA_Level" : "MSAA_2X",
+        "LODBias" : 1.5,
+        "MaxLODLevel" : 0
+    },
+    "QUALITY_ULTRA":
+    {
+        "MSAA_Level" : "MSAA_2X",
+        "LODBias" : 2,
+        "MaxLODLevel" : 0
+    }
+}

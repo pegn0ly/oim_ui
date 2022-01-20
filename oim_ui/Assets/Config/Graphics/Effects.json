@@ -1,0 +1,32 @@
+{
+    "QUALITY_VERY_LOW" :
+    {
+        "UseSoftParticles" : false,
+        "ParticleRaycastBudget" : 4
+    },
+    "QUALITY_LOW" :
+    {
+        "UseSoftParticles" : false,
+        "ParticleRaycastBudget" : 16
+    },
+    "QUALITY_MEDIUM" :
+    {
+        "UseSoftParticles" : false,
+        "ParticleRaycastBudget" : 64
+    },
+    "QUALITY_HIGH" :
+    {
+        "UseSoftParticles" : false,
+        "ParticleRaycastBudget" : 256
+    },
+    "QUALITY_VERY_HIGH" :
+    {
+        "UseSoftParticles" : true,
+        "ParticleRaycastBudget" : 1024
+    },
+    "QUALITY_ULTRA":
+    {
+        "UseSoftParticles" : true,
+        "ParticleRaycastBudget" : 4096
+    }
+}

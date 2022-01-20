@@ -1,0 +1,118 @@
+using System.Collections.Generic;
+using System.IO;
+
+using UnityEngine;
+
+using TMPro;
+
+using Newtonsoft.Json;
+
+namespace BNF.UI.Configure
+{
+    // возможные уровни настроек
+    public enum QualityLevel
+    {
+        QUALITY_VERY_LOW = 0,
+        QUALITY_LOW = 1,
+        QUALITY_MEDIUM = 2,
+        QUALITY_HIGH = 3,
+        QUALITY_VERY_HIGH = 4,
+        QUALITY_ULTRA = 5
+    }
+
+    // форма информации о сохраненном уровне настроек для сериализации
+    public struct SavedQualityLevel
+    {
+        public QualityLevel Level;
+
+        public SavedQualityLevel(QualityLevel new_level)
+        {
+            Level = new_level;
+        }
+    }
+
+    // Базовый класс для всех настройщиков графики.
+    // 
+    // Поля:
+    // - ConfigurationsNames - словарь путей к именам профилей настроек
+    // - PossibleQualityConfigurations - список возможных профилей настроек для конкретного настройщика
+    // - QualityConfigurationFile - путь к конкретному файлу настроек
+    // - QualityVisualizator - текстовый элемент для отображения имени профиля
+    // - QualityLevelsList - связный список последовательности изменения профилей
+    // - CurrentQualityLevel - текущий профиль
+    // - SavedQualityLevels - сохраненные профили настроек
+    public abstract class BNF_GraphicsConfiguratorBase : MonoBehaviour
+    {
+        protected readonly Dictionary<QualityLevel, string> ConfigurationsNames = new Dictionary<QualityLevel, string>()
+        {
+            {QualityLevel.QUALITY_VERY_LOW, "Quality/Profiles/Names/VeryLow.txt"},
+            {QualityLevel.QUALITY_LOW, "Quality/Profiles/Names/Low.txt"},
+            {QualityLevel.QUALITY_MEDIUM, "Quality/Profiles/Names/Medium.txt"},
+            {QualityLevel.QUALITY_HIGH, "Quality/Profiles/Names/High.txt"},
+            {QualityLevel.QUALITY_VERY_HIGH, "Quality/Profiles/Names/VeryHigh.txt"},
+            {QualityLevel.QUALITY_ULTRA, "Quality/Profiles/Names/Ultra.txt"},
+        };
+
+        [SerializeField]
+        protected List<QualityLevel> PossibleQualityConfigurations;
+
+        [SerializeField]
+        protected string QualityConfigurationFile;
+
+        [SerializeField]
+        protected TextMeshProUGUI QualityVisualizator;
+
+        protected LinkedList<QualityLevel> QualityLevelsList = new LinkedList<QualityLevel>();
+
+        protected LinkedListNode<QualityLevel> CurrentQualityLevel;
+
+        protected Dictionary<string, SavedQualityLevel> SavedQualityLevels;
+
+        // Сформировать связный список последовательности профилей; загрузить сохраненные профили.
+        private void Awake()
+        {
+            foreach(QualityLevel level in PossibleQualityConfigurations)
+            {
+                QualityLevelsList.AddLast(level);
+            }
+
+            CurrentQualityLevel = QualityLevelsList.First;
+
+            SavedQualityLevels = JsonConvert.DeserializeObject<Dictionary<string, SavedQualityLevel>>(File.ReadAllText("Assets/Config/Graphics/Saved.json"));
+        }
+
+        // Переключение на следующий профиль в списке, публичный, т.к. назначается кнопке UI.
+        public virtual void IncreaseQuality()
+        {
+            CurrentQualityLevel = CurrentQualityLevel == QualityLevelsList.Last ? QualityLevelsList.First : CurrentQualityLevel.Next;
+        }
+
+        // Переключение на предыдущий профиль в списке, публичный, т.к. назначается кнопке UI.
+        public virtual void DecreaseQuality()
+        {
+            CurrentQualityLevel = CurrentQualityLevel == QualityLevelsList.First ? QualityLevelsList.Last : CurrentQualityLevel.Previous; 
+        }
+
+        // Загружает сохраненный профиль для конкретного типа настроек.
+        protected virtual void LoadQuality(string quality_type)
+        {
+            SavedQualityLevel SavedLevel = SavedQualityLevels[quality_type];
+            CurrentQualityLevel = QualityLevelsList.FindLast(SavedLevel.Level);
+        }
+
+        // Сохраняет текущий профиль для конкретного типа настроек.
+        protected virtual void SaveQuality(string quality_type, QualityLevel level_to_save)
+        {
+            SavedQualityLevels[quality_type] = new SavedQualityLevel(level_to_save);
+            string NewSavedLevels = JsonConvert.SerializeObject(SavedQualityLevels);
+            File.WriteAllText("Assets/Config/Graphics/Saved.json", NewSavedLevels);
+        }
+
+        // Устанавливает новый профиль настроек.
+
+        protected virtual void UpdateQuality(QualityLevel new_level)
+        {
+            Debug.Log("Quality updated to " + new_level.ToString());
+        }
+    }
+}
