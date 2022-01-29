@@ -53,13 +53,6 @@ namespace BNF.UI.Configure
 
         private readonly string ConfigurationPath = "Assets/Config/Player/Saved.json";
 
-        private readonly Dictionary<GenderType, string> GenderNames = new Dictionary<GenderType, string>()
-        {
-            {GenderType.GENDER_MALE, "Gender/Names/Male.txt"},
-            {GenderType.GENDER_FEMALE, "Gender/Names/Female.txt"},
-            {GenderType.GENDER_OTHER, "Gender/Names/Other.txt"}
-        };
-
         [SerializeField]
         private TMP_InputField InputField;
 
@@ -68,6 +61,11 @@ namespace BNF.UI.Configure
 
         [SerializeField]
         private TextMeshProUGUI GenderVisualizator;
+
+        [SerializeField]
+        private TextMeshProUGUI GenderTitle;
+
+        private LocaleLanguage Language;
 
         private SavedPlayerConfiguration CurrentPlayerConfiguration;
         
@@ -82,16 +80,21 @@ namespace BNF.UI.Configure
             GenderTypesList.AddLast(GenderType.GENDER_MALE);
             GenderTypesList.AddLast(GenderType.GENDER_FEMALE);
             GenderTypesList.AddLast(GenderType.GENDER_OTHER);
+
+            BNF_LanguageConfigurator.LanguageChanged += (new_lng) => Language = new_lng;
+            BNF_LanguageConfigurator.LanguageChanged += (new_lng) => GenderTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_lng, "select_gender"));
         }
 
         private void Start()
         {
+            BNF_LanguageConfigurator.LanguageChanged += (new_lng) => GenderVisualizator.SetText(BNF_Localizer.Instance.GetLocalizedString(Language, CurrentGender.Value.ToString()));
+
             InputField.enabled = false;
             EditButton.onClick.AddListener(StartNicknameEdit);
             InputField.onEndEdit.AddListener((nickname) => SaveNickname(nickname));
             InputField.onEndEdit.AddListener((nickname) => InputField.enabled = false);
 
-            GenderChanged += (gender) => GenderVisualizator.SetText(File.ReadAllText("Assets/Texts/Ru/" + GenderNames[gender]));
+            GenderChanged += (gender) => GenderVisualizator.SetText(BNF_Localizer.Instance.GetLocalizedString(Language, gender.ToString()));
             GenderChanged += (gender) => SaveGender(gender);
 
             LoadConfiguration();

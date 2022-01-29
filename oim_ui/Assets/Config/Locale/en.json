@@ -1,0 +1,35 @@
+{
+    "Id": 1,
+    "Code": "en",
+    "Title": "English",
+    "Values": 
+    {
+        "settings": "Settings",
+
+        "graphics_quality" : "Graphics",
+        "models_quality" : "Models",
+        "textures_quality" : "Textures",
+        "fx_quality" : "Effects",
+
+        "QUALITY_VERY_LOW" : "Very low",
+        "QUALITY_LOW" : "Low",
+        "QUALITY_MEDIUM" : "Medium",
+        "QUALITY_HIGH" : "High",
+        "QUALITY_VERY_HIGH" : "Very high",
+        "QUALITY_ULTRA" : "Ultra",
+
+        "sound" : "Sound",
+        "master_volume" : "Master volume",
+        "music_volume" : "Music volume",
+        "voice_volume" : "Voice volume",
+        "fx_volume" : "Effects volume",
+
+        "select_gender" : "Select gender",
+        "GENDER_MALE" : "Male",
+        "GENDER_FEMALE" : "Female",
+        "GENDER_OTHER" : "Other",
+
+        "select_language" : "Select language",
+        "subtitles" : "Subtitles"
+    }
+}

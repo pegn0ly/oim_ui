@@ -43,21 +43,19 @@ namespace BNF.UI.Configure
     // - SavedQualityLevels - сохраненные профили настроек
     public abstract class BNF_GraphicsConfiguratorBase : MonoBehaviour
     {
-        protected readonly Dictionary<QualityLevel, string> ConfigurationsNames = new Dictionary<QualityLevel, string>()
-        {
-            {QualityLevel.QUALITY_VERY_LOW, "Quality/Profiles/Names/VeryLow.txt"},
-            {QualityLevel.QUALITY_LOW, "Quality/Profiles/Names/Low.txt"},
-            {QualityLevel.QUALITY_MEDIUM, "Quality/Profiles/Names/Medium.txt"},
-            {QualityLevel.QUALITY_HIGH, "Quality/Profiles/Names/High.txt"},
-            {QualityLevel.QUALITY_VERY_HIGH, "Quality/Profiles/Names/VeryHigh.txt"},
-            {QualityLevel.QUALITY_ULTRA, "Quality/Profiles/Names/Ultra.txt"},
-        };
-
         [SerializeField]
         protected List<QualityLevel> PossibleQualityConfigurations;
 
         [SerializeField]
         protected string QualityConfigurationFile;
+
+        [SerializeField]
+        protected TextMeshProUGUI MainTitle;
+
+        [SerializeField]
+        protected TextMeshProUGUI LocalTitle;
+
+        protected LocaleLanguage Language;
 
         [SerializeField]
         protected TextMeshProUGUI QualityVisualizator;
@@ -79,6 +77,9 @@ namespace BNF.UI.Configure
             CurrentQualityLevel = QualityLevelsList.First;
 
             SavedQualityLevels = JsonConvert.DeserializeObject<Dictionary<string, SavedQualityLevel>>(File.ReadAllText("Assets/Config/Graphics/Saved.json"));
+
+            BNF_LanguageConfigurator.LanguageChanged += (new_language) => Language = new_language;
+            BNF_LanguageConfigurator.LanguageChanged += (new_language) => MainTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "graphics_quality"));
         }
 
         // Переключение на следующий профиль в списке, публичный, т.к. назначается кнопке UI.
@@ -112,7 +113,13 @@ namespace BNF.UI.Configure
 
         protected virtual void UpdateQuality(QualityLevel new_level)
         {
-            Debug.Log("Quality updated to " + new_level.ToString());
+           // Debug.Log("Quality updated to " + new_level.ToString());
+        }
+        
+        // Обновляет текст настройки при изменении локализации.
+        protected virtual void UpdateLocale(LocaleLanguage new_lng)
+        {
+            QualityVisualizator.SetText(BNF_Localizer.Instance.GetLocalizedString(new_lng, CurrentQualityLevel.Value.ToString()));
         }
     }
 }

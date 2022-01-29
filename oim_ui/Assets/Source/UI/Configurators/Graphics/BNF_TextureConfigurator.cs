@@ -44,14 +44,16 @@ namespace BNF
                 private delegate void OnTextureQualityChanged(QualityLevel new_level);
                 private static event OnTextureQualityChanged TextureQualityChanged;
 
-                // Загрузить из конфига возможные параметры; подписаться на ивент изменения настроек; загрузить сохраненную конфигурацию текстур.
+                // Загрузить из конфига возможные параметры; подписаться на ивенты изменения настроек и языка; загрузить сохраненную конфигурацию текстур.
                 private void Start()
                 {
                     PossibleTextureProps = JsonConvert.DeserializeObject<Dictionary<QualityLevel, TextureProps>>(File.ReadAllText(QualityConfigurationFile));
 
                     TextureQualityChanged += this.UpdateQuality;
-                    TextureQualityChanged += (new_level) => QualityVisualizator.SetText(File.ReadAllText("Assets/Texts/Ru/" + ConfigurationsNames[new_level]));
+                    TextureQualityChanged += (new_level) => QualityVisualizator.SetText(BNF_Localizer.Instance.GetLocalizedString(Language, new_level.ToString()));
                     TextureQualityChanged += (new_level) => SaveQuality("Textures", new_level);
+
+                    BNF_LanguageConfigurator.LanguageChanged += UpdateLocale;
 
                     LoadQuality("Textures");
                 }
@@ -85,6 +87,12 @@ namespace BNF
 
                     QualitySettings.masterTextureLimit = (int)NewProps.Resolution;
                     QualitySettings.anisotropicFiltering = NewProps.Filtering;
+                }
+ 
+                protected override void UpdateLocale(LocaleLanguage new_lng)
+                {
+                    base.UpdateLocale(new_lng);
+                    LocalTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_lng, "textures_quality"));
                 }
             }
         }

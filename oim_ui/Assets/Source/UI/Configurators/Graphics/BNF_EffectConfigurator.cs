@@ -37,12 +37,16 @@ namespace BNF.UI.Configure
         private static event OnFXQualityChanged FXQualityChanged;
 
         private void Start()
-        {
+        { 
             PossibleFXProps = JsonConvert.DeserializeObject<Dictionary<QualityLevel, FXProps>>(File.ReadAllText(QualityConfigurationFile));
 
+            LocalTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(Language, "fx_quality"));
+
             FXQualityChanged += this.UpdateQuality;
-            FXQualityChanged += (new_level) => QualityVisualizator.SetText(File.ReadAllText("Assets/Texts/Ru/" + ConfigurationsNames[new_level]));
+            FXQualityChanged += (new_level) => QualityVisualizator.SetText(BNF_Localizer.Instance.GetLocalizedString(Language, new_level.ToString()));
             FXQualityChanged += (new_level) => SaveQuality("Effects", new_level);
+
+            BNF_LanguageConfigurator.LanguageChanged += UpdateLocale;
 
             LoadQuality("Effects");
         }
@@ -63,6 +67,7 @@ namespace BNF.UI.Configure
 
         protected override void LoadQuality(string quality_type)
         {
+            Debug.Log("Trying to load fx...");
             base.LoadQuality(quality_type);
 
             FXQualityChanged(CurrentQualityLevel.Value);
@@ -76,7 +81,13 @@ namespace BNF.UI.Configure
 
             QualitySettings.softParticles = NewProps.UseSoftParticles;
             QualitySettings.particleRaycastBudget = NewProps.ParticleRaycastBudget;
+        }
 
+        protected override void UpdateLocale(LocaleLanguage new_lng)
+        {
+            Debug.Log("FX config: update locale " + Language);
+            base.UpdateLocale(new_lng);
+            LocalTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_lng, "fx_quality"));
         }
     }
 }

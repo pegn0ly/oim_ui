@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using TMPro;
+
 using Newtonsoft.Json;
 
 namespace BNF.UI.Configure
@@ -16,6 +18,13 @@ namespace BNF.UI.Configure
         LNG_CHINESE = 2
     }
 
+    public interface ILocalizable
+    {
+        public LocaleLanguage Language{get; set;}
+
+        public void UpdateLocale();
+        
+    }
     // класс отвечающий за настройку параметров языка(впоследствии, вероятно, и локализации в целом)
     //
     // Внутренние типы:
@@ -64,10 +73,16 @@ namespace BNF.UI.Configure
         [SerializeField]
         private Toggle SubtitlesSwitcher;
 
+        [SerializeField]
+        private TextMeshProUGUI LanguageSwitcherTitle;
+
+        [SerializeField]
+        private TextMeshProUGUI SubtitlesTitle;
+
         private Dictionary<LocaleLanguage, Toggle> LanguageVariants = new Dictionary<LocaleLanguage, Toggle>();
 
         private SavedLanguageConfiguration CurrentLanguageConfiguration;
-
+        
         public delegate void OnLanguageChanged(LocaleLanguage new_language);
         public static event OnLanguageChanged LanguageChanged;
 
@@ -83,6 +98,8 @@ namespace BNF.UI.Configure
             }
 
             LanguageChanged += (new_language) => SaveLanguage(new_language);
+            LanguageChanged += (new_language) => LanguageSwitcherTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "select_language"));
+            LanguageChanged += (new_language) => SubtitlesTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "subtitles"));
 
             SubtitlesSwitcher.onValueChanged.AddListener((enabled) => SaveSubtitlesCondition(enabled));
 
@@ -95,12 +112,15 @@ namespace BNF.UI.Configure
 
             SubtitlesSwitcher.isOn = CurrentLanguageConfiguration.SubltitlesEnabled;
             LanguageVariants[CurrentLanguageConfiguration.Language].isOn = true;
-
+    
             SwitchLanguageToggle(LanguageVariants[CurrentLanguageConfiguration.Language], CurrentLanguageConfiguration.Language);
         }
 
         private void SwitchLanguageToggle(Toggle toggle, LocaleLanguage new_language)
         {
+            //
+            LanguageChanged(new_language);
+
             if(SelectedToggle != null)
             {
                 SelectedToggle.enabled = true;
@@ -109,7 +129,7 @@ namespace BNF.UI.Configure
             SelectedToggle = toggle;
             //SelectedToggle.enabled = false;
 
-            LanguageChanged(new_language);
+            //LanguageChanged(new_language);
         }
 
         private void SaveLanguage(LocaleLanguage new_language)

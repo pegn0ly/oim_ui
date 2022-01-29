@@ -3,6 +3,9 @@ using System.IO;
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
+
+using TMPro;
 
 using Newtonsoft.Json;
 
@@ -47,6 +50,10 @@ namespace BNF.UI.Configure
 
         private readonly string VOLUME_TYPE_FX = "Effects";
 
+        private readonly float LOWEST_VOLUME = -50f;
+
+        private readonly float HIGHEST_VOLUME = 15f;
+
         private Dictionary<string, SavedVolumeConfiguration> SavedVolumes;
 
         [SerializeField]
@@ -72,6 +79,24 @@ namespace BNF.UI.Configure
 
         [SerializeField]
         private Toggle FXVolumeMuter;
+
+        [SerializeField]
+        private TextMeshProUGUI MainTitle;
+
+        [SerializeField]
+        private TextMeshProUGUI MasterTitle;
+
+        [SerializeField]
+        private TextMeshProUGUI MusicTitle;
+
+        [SerializeField]
+        private TextMeshProUGUI VoiceTitle;
+
+        [SerializeField]
+        private TextMeshProUGUI FXTitle;
+
+        [SerializeField]
+        private AudioMixer Mixer;
 
         public delegate void OnMasterVolumeChanged(float volume);
         public static event OnMasterVolumeChanged MasterVolumeChanged;
@@ -107,13 +132,21 @@ namespace BNF.UI.Configure
             MasterVolumeMuted += (mute) => SaveMuteCondition(VOLUME_TYPE_MASTER, mute);
 
             MusicVolumeChanged += (volume) => SaveVolume(VOLUME_TYPE_MUSIC, volume);
+            MusicVolumeChanged += (volume) => Mixer.SetFloat("MusicVolume", SavedVolumes[VOLUME_TYPE_MUSIC].IsMuted ? LOWEST_VOLUME : volume);
             MusicVolumeMuted += (mute) => SaveMuteCondition(VOLUME_TYPE_MUSIC, mute);
+            MusicVolumeMuted += (mute) => Mixer.SetFloat("MusicVolume", mute == true ? LOWEST_VOLUME : SavedVolumes[VOLUME_TYPE_MUSIC].Volume);
 
             VoiceVolumeChanged += (volume) => SaveVolume(VOLUME_TYPE_VOICE, volume);
+            VoiceVolumeChanged += (volume) => Mixer.SetFloat("VoiceVolume", SavedVolumes[VOLUME_TYPE_VOICE].IsMuted ? LOWEST_VOLUME : volume);
             VoiceVolumeMuted += (mute) => SaveMuteCondition(VOLUME_TYPE_VOICE, mute);
+            VoiceVolumeMuted += (mute) => Mixer.SetFloat("VoiceVolume", mute == true ? LOWEST_VOLUME : SavedVolumes[VOLUME_TYPE_VOICE].Volume);
 
             FXVolumeChanged += (volume) => SaveVolume(VOLUME_TYPE_FX, volume);
+            FXVolumeChanged += (volume) => Mixer.SetFloat("FXVolume", SavedVolumes[VOLUME_TYPE_FX].IsMuted ? LOWEST_VOLUME : volume);
             FXVolumeMuted += (mute) => SaveMuteCondition(VOLUME_TYPE_FX, mute);
+            FXVolumeMuted += (mute) => Mixer.SetFloat("FXVolume", mute == true ? LOWEST_VOLUME : SavedVolumes[VOLUME_TYPE_FX].Volume);
+
+            BNF_LanguageConfigurator.LanguageChanged += UpdateLocale;
 
             LoadVolumes();
         }
@@ -156,6 +189,15 @@ namespace BNF.UI.Configure
             SavedVolumes[volume_type] = new SavedVolumeConfiguration(SavedVolumes[volume_type].Volume, new_condition);
             string NewSavedVolume = JsonConvert.SerializeObject(SavedVolumes);
             File.WriteAllText(ConfigurationPath, NewSavedVolume);
+        }
+
+        private void UpdateLocale(LocaleLanguage new_language)
+        {
+            MainTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "sound"));
+            MasterTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "master_volume"));
+            MusicTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "music_volume"));
+            VoiceTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "voice_volume"));
+            FXTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_language, "fx_volume"));
         }
 
         // Ниже все публичные методы для назначения элементам интерфейса.

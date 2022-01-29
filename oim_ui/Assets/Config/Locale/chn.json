@@ -1,0 +1,35 @@
+{
+    "Id": 2,
+    "Code": "chn",
+    "Title": "中國人",
+    "Values": 
+    {
+        "settings": "設置",
+
+        "graphics_quality" : "圖形",
+        "models_quality" : "楷模",
+        "textures_quality" : "質地",
+        "fx_quality" : "效果",
+
+        "QUALITY_VERY_LOW" : "非常低",
+        "QUALITY_LOW" : "低的",
+        "QUALITY_MEDIUM" : "中等的",
+        "QUALITY_HIGH" : "高的",
+        "QUALITY_VERY_HIGH" : "很高",
+        "QUALITY_ULTRA" : "極好",
+
+        "sound" : "聲音",
+        "master_volume" : "總體積",
+        "music_volume" : "音樂",
+        "voice_volume" : "嗓音",
+        "fx_volume" : "效果",
+
+        "select_gender" : "性別",
+        "GENDER_MALE" : "男性",
+        "GENDER_FEMALE" : "女性",
+        "GENDER_OTHER" : "其他",
+
+        "select_language" : "語言選擇",
+        "subtitles" : "字幕"
+    }
+}

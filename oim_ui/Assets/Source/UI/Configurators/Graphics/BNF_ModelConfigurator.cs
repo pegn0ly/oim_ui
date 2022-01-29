@@ -52,8 +52,10 @@ namespace BNF.UI.Configure
             PossibleModelsProps = JsonConvert.DeserializeObject<Dictionary<QualityLevel, ModelsProps>>(File.ReadAllText(QualityConfigurationFile));
 
             ModelsQualityChanged += this.UpdateQuality;
-            ModelsQualityChanged += (new_level) => QualityVisualizator.SetText(File.ReadAllText("Assets/Texts/Ru/" + ConfigurationsNames[new_level]));
+            ModelsQualityChanged += (new_level) => QualityVisualizator.SetText(BNF_Localizer.Instance.GetLocalizedString(Language, new_level.ToString()));
             ModelsQualityChanged += (new_level) => SaveQuality("Models", new_level);
+
+            BNF_LanguageConfigurator.LanguageChanged += UpdateLocale;
 
             LoadQuality("Models");
         }
@@ -88,7 +90,12 @@ namespace BNF.UI.Configure
             QualitySettings.antiAliasing = (int)NewProps.MSAA_Level;
             QualitySettings.lodBias = NewProps.LODBias;
             QualitySettings.maximumLODLevel = NewProps.MaxLODLevel;
+        }
 
+        protected override void UpdateLocale(LocaleLanguage new_lng)
+        {
+            base.UpdateLocale(new_lng);
+            LocalTitle.SetText(BNF_Localizer.Instance.GetLocalizedString(new_lng, "models_quality"));
         }
     }
 }

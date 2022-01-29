@@ -11,7 +11,7 @@ TrueTypeFontImporter:
   fontNames:
   - Franklin Gothic Demi Cond
   fallbackFontReferences: []
-  customCharacters: 
+  customCharacters: 4E0,598C3126BAFD7
   fontRenderingMode: 0
   ascentCalculationMode: 1
   useLegacyBoundsCalculation: 0

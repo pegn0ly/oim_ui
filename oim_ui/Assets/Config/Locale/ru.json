@@ -1,0 +1,35 @@
+{
+    "Id": 0,
+    "Code": "ru",
+    "Title": "Русский",
+    "Values": 
+    {
+        "settings": "Настройки",
+
+        "graphics_quality" : "Графика",
+        "models_quality" : "Модели",
+        "textures_quality" : "Текстуры",
+        "fx_quality" : "Эффекты",
+
+        "QUALITY_VERY_LOW" : "Очень низко",
+        "QUALITY_LOW" : "Низко",
+        "QUALITY_MEDIUM" : "Средне",
+        "QUALITY_HIGH" : "Высоко",
+        "QUALITY_VERY_HIGH" : "Очень высоко",
+        "QUALITY_ULTRA" : "Ультра",
+
+        "sound" : "Звук",
+        "master_volume" : "Общая громкость",
+        "music_volume" : "Музыка",
+        "voice_volume" : "Голос",
+        "fx_volume" : "Эффекты",
+
+        "select_gender" : "Выбрать пол",
+        "GENDER_MALE" : "Мужской",
+        "GENDER_FEMALE" : "Женский",
+        "GENDER_OTHER" : "Другое",
+
+        "select_language" : "Выбрать язык",
+        "subtitles" : "Субтитры"
+    }
+}

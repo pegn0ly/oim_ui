@@ -198,6 +198,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3490019}
   m_CullTransparentMesh: 1
+--- !u!1 &24043972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 24043975}
+  - component: {fileID: 24043973}
+  m_Layer: 0
+  m_Name: UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &24043973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24043972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a4c6b02505ec742ac2d1bc38cf06e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocaleVariants:
+  - Assets/Config/Locale/ru.json
+  - Assets/Config/Locale/en.json
+  - Assets/Config/Locale/chn.json
+--- !u!4 &24043975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24043972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 290947291}
+  - {fileID: 1046491473}
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &25108010
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,7 +657,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 0.7692308
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1577,8 +1626,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491476}
-        m_TargetAssemblyTypeName: ConfiguratorBase, Assembly-CSharp
+      - m_Target: {fileID: 248719353}
+        m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_TextureConfigurator, Assembly-CSharp
         m_MethodName: DecreaseQuality
         m_Mode: 1
         m_Arguments:
@@ -1898,8 +1947,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491476}
-        m_TargetAssemblyTypeName: ConfiguratorBase, Assembly-CSharp
+      - m_Target: {fileID: 248719353}
+        m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_TextureConfigurator, Assembly-CSharp
         m_MethodName: IncreaseQuality
         m_Mode: 1
         m_Arguments:
@@ -2339,6 +2388,125 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232694761}
   m_CullTransparentMesh: 1
+--- !u!1 &248719349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 248719350}
+  - component: {fileID: 248719353}
+  - component: {fileID: 248719352}
+  - component: {fileID: 248719351}
+  m_Layer: 0
+  m_Name: Graphics
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &248719350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248719349}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 290947291}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &248719351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248719349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3b8a17ad3171c48bf47043fca5811d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PossibleQualityConfigurations: 000000000100000002000000030000000400000005000000
+  QualityConfigurationFile: Assets/Config/Graphics/Models.json
+  MainTitle: {fileID: 59209276}
+  LocalTitle: {fileID: 714026301}
+  QualityVisualizator: {fileID: 691316962}
+--- !u!114 &248719352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248719349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91937198a494a1c448dfb4bdd6509308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PossibleQualityConfigurations: 000000000100000002000000030000000400000005000000
+  QualityConfigurationFile: Assets/Config/Graphics/Effects.json
+  MainTitle: {fileID: 59209276}
+  LocalTitle: {fileID: 1497992130}
+  QualityVisualizator: {fileID: 1380142958}
+--- !u!114 &248719353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248719349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37031b53d28e8634cb17c41f1dc2882e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PossibleQualityConfigurations: 01000000020000000300000004000000
+  QualityConfigurationFile: Assets/Config/Graphics/Textures.json
+  MainTitle: {fileID: 59209276}
+  LocalTitle: {fileID: 1460994455}
+  QualityVisualizator: {fileID: 429999642}
+--- !u!1 &290947290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 290947291}
+  m_Layer: 0
+  m_Name: Configure
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &290947291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 290947290}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1303024585}
+  - {fileID: 1385759707}
+  - {fileID: 564211598}
+  - {fileID: 248719350}
+  - {fileID: 1637428693}
+  m_Father: {fileID: 24043975}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &305443282
 GameObject:
   m_ObjectHideFlags: 0
@@ -2424,8 +2592,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
-        m_TargetAssemblyTypeName: BNF_AudioConfigurator, Assembly-CSharp
+      - m_Target: {fileID: 564211599}
+        m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: MuteMusic
         m_Mode: 0
         m_Arguments:
@@ -2595,7 +2763,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491481}
+      - m_Target: {fileID: 1385759708}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_PlayerConfigurator, Assembly-CSharp
         m_MethodName: PreviousGender
         m_Mode: 1
@@ -2839,14 +3007,14 @@ MonoBehaviour:
   m_FillRect: {fileID: 650781441}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -50
+  m_MaxValue: 15
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
+      - m_Target: {fileID: 564211599}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: UpdateVoiceVolume
         m_Mode: 0
@@ -3346,6 +3514,63 @@ RectTransform:
   m_AnchoredPosition: {x: -0.000005722, y: 34.763134}
   m_SizeDelta: {x: 204.48, y: 19.3867}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &564211597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 564211598}
+  - component: {fileID: 564211599}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &564211598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564211597}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 290947291}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &564211599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 564211597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef8739f05c45d19408c1b839d6bdebb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MasterVolumeSlider: {fileID: 1504639500}
+  MusicVolumeSlider: {fileID: 1447401873}
+  VoiceVolumeSlider: {fileID: 405297120}
+  FXVolumeSlider: {fileID: 1243367572}
+  MasterVolumeMuter: {fileID: 1586315429}
+  MusicVolumeMuter: {fileID: 305443284}
+  VoiceVolumeMuter: {fileID: 1866984570}
+  FXVolumeMuter: {fileID: 1918425683}
+  MainTitle: {fileID: 1232747126}
+  MasterTitle: {fileID: 121720457}
+  MusicTitle: {fileID: 826804536}
+  VoiceTitle: {fileID: 1292878066}
+  FXTitle: {fileID: 781182693}
+  Mixer: {fileID: 24100000, guid: 4a598f2e7d5480849b399cf2439df702, type: 2}
 --- !u!1 &581583913
 GameObject:
   m_ObjectHideFlags: 0
@@ -3437,7 +3662,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &588390562
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3588,7 +3813,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491481}
+      - m_Target: {fileID: 1385759708}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_PlayerConfigurator, Assembly-CSharp
         m_MethodName: NextGender
         m_Mode: 1
@@ -3812,7 +4037,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 0.7692308
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -4309,7 +4534,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491482}
+      - m_Target: {fileID: 248719352}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_EffectConfigurator, Assembly-CSharp
         m_MethodName: IncreaseQuality
         m_Mode: 1
@@ -5028,7 +5253,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491475}
+      - m_Target: {fileID: 248719351}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_ModelConfigurator, Assembly-CSharp
         m_MethodName: DecreaseQuality
         m_Mode: 1
@@ -6047,7 +6272,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1006358005
 GameObject:
@@ -6344,15 +6569,7 @@ GameObject:
   - component: {fileID: 1046491472}
   - component: {fileID: 1046491471}
   - component: {fileID: 1046491470}
-  - component: {fileID: 1046491474}
-  - component: {fileID: 1046491476}
-  - component: {fileID: 1046491475}
-  - component: {fileID: 1046491477}
-  - component: {fileID: 1046491479}
   - component: {fileID: 1046491478}
-  - component: {fileID: 1046491480}
-  - component: {fileID: 1046491481}
-  - component: {fileID: 1046491482}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6434,81 +6651,14 @@ RectTransform:
   m_Children:
   - {fileID: 1539083956}
   - {fileID: 1027930474}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 24043975}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1046491474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a18e78036da2c7b4db20eb0b22c554a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextureConfigurator: {fileID: 1046491476}
-  ModelConfigurator: {fileID: 1046491475}
-  EffectConfigurator: {fileID: 0}
-  AudioConfigurator: {fileID: 1046491477}
-  PlayerConfigurator: {fileID: 1046491481}
---- !u!114 &1046491475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf3b8a17ad3171c48bf47043fca5811d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PossibleQualityConfigurations: 000000000100000002000000030000000400000005000000
-  QualityConfigurationFile: Assets/Config/Graphics/Models.json
-  QualityVisualizator: {fileID: 691316962}
---- !u!114 &1046491476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37031b53d28e8634cb17c41f1dc2882e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PossibleQualityConfigurations: 01000000020000000300000004000000
-  QualityConfigurationFile: Assets/Config/Graphics/Textures.json
-  QualityVisualizator: {fileID: 429999642}
---- !u!114 &1046491477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef8739f05c45d19408c1b839d6bdebb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MasterVolumeSlider: {fileID: 1504639500}
-  MusicVolumeSlider: {fileID: 1447401873}
-  VoiceVolumeSlider: {fileID: 405297120}
-  FXVolumeSlider: {fileID: 1243367572}
-  MasterVolumeMuter: {fileID: 1586315429}
-  MusicVolumeMuter: {fileID: 305443284}
-  VoiceVolumeMuter: {fileID: 1866984570}
-  FXVolumeMuter: {fileID: 1918425683}
 --- !u!82 &1046491478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6518,7 +6668,7 @@ AudioSource:
   m_GameObject: {fileID: 1046491469}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -3225280932752414290, guid: 4a598f2e7d5480849b399cf2439df702, type: 2}
   m_audioClip: {fileID: 8300000, guid: dd6b04f80aa23c04bb8db29a9bd172e5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -6605,65 +6755,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1046491479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c9d1f5dc4b04314caf33bfca3992f52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Source: {fileID: 1046491478}
---- !u!114 &1046491480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8341552f14a355041994690163e7a6d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RuToggle: {fileID: 443565668}
-  EnToggle: {fileID: 915559847}
-  ChnToggle: {fileID: 588390563}
-  SubtitlesSwitcher: {fileID: 1818933276}
---- !u!114 &1046491481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80a431f61b01e0340b2d7ba7446be62a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InputField: {fileID: 25108012}
-  EditButton: {fileID: 856263813}
-  GenderVisualizator: {fileID: 1297350751}
---- !u!114 &1046491482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1046491469}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91937198a494a1c448dfb4bdd6509308, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PossibleQualityConfigurations: 000000000100000002000000030000000400000005000000
-  QualityConfigurationFile: Assets/Config/Graphics/Effects.json
-  QualityVisualizator: {fileID: 1380142958}
 --- !u!1 &1066970585
 GameObject:
   m_ObjectHideFlags: 0
@@ -7367,14 +7458,14 @@ MonoBehaviour:
   m_FillRect: {fileID: 45295546}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -50
+  m_MaxValue: 15
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
+      - m_Target: {fileID: 564211599}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: UpdateFXVolume
         m_Mode: 0
@@ -8207,7 +8298,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491475}
+      - m_Target: {fileID: 248719351}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_ModelConfigurator, Assembly-CSharp
         m_MethodName: IncreaseQuality
         m_Mode: 1
@@ -8257,6 +8348,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302121746}
   m_CullTransparentMesh: 1
+--- !u!1 &1303024584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1303024585}
+  - component: {fileID: 1303024586}
+  m_Layer: 0
+  m_Name: Language
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1303024585
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303024584}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 290947291}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1303024586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303024584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8341552f14a355041994690163e7a6d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RuToggle: {fileID: 443565668}
+  EnToggle: {fileID: 915559847}
+  ChnToggle: {fileID: 588390563}
+  SubtitlesSwitcher: {fileID: 1818933276}
+  LanguageSwitcherTitle: {fileID: 735103372}
+  SubtitlesTitle: {fileID: 685927391}
 --- !u!1 &1340836738
 GameObject:
   m_ObjectHideFlags: 0
@@ -8737,6 +8877,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380142956}
   m_CullTransparentMesh: 1
+--- !u!1 &1385759706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1385759707}
+  - component: {fileID: 1385759708}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1385759707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385759706}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 290947291}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1385759708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1385759706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80a431f61b01e0340b2d7ba7446be62a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InputField: {fileID: 25108012}
+  EditButton: {fileID: 856263813}
+  GenderVisualizator: {fileID: 1297350751}
+  GenderTitle: {fileID: 658042528}
 --- !u!1 &1401172662
 GameObject:
   m_ObjectHideFlags: 0
@@ -9116,15 +9303,15 @@ MonoBehaviour:
   m_FillRect: {fileID: 1782138740}
   m_HandleRect: {fileID: 0}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: -50
+  m_MaxValue: 15
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
-        m_TargetAssemblyTypeName: BNF_AudioConfigurator, Assembly-CSharp
+      - m_Target: {fileID: 564211599}
+        m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: UpdateMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -9679,8 +9866,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
-        m_TargetAssemblyTypeName: BNF_AudioConfigurator, Assembly-CSharp
+      - m_Target: {fileID: 564211599}
+        m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: UpdateMasterVolume
         m_Mode: 0
         m_Arguments:
@@ -9964,8 +10151,8 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
-        m_TargetAssemblyTypeName: BNF_AudioConfigurator, Assembly-CSharp
+      - m_Target: {fileID: 564211599}
+        m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: MuteMaster
         m_Mode: 0
         m_Arguments:
@@ -10278,6 +10465,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1614735767}
   m_CullTransparentMesh: 1
+--- !u!1 &1637428692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1637428693}
+  - component: {fileID: 1637428694}
+  m_Layer: 0
+  m_Name: Common
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1637428693
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637428692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 290947291}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1637428694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637428692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6212a15df9151c546ab58aa7ae832c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainHeader: {fileID: 1263400829}
+  ExitButton: {fileID: 1353535725}
+  LoginButton: {fileID: 105317534}
+  SuccessButton: {fileID: 1776143245}
 --- !u!1 &1643112739
 GameObject:
   m_ObjectHideFlags: 0
@@ -10360,7 +10594,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491482}
+      - m_Target: {fileID: 248719352}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_EffectConfigurator, Assembly-CSharp
         m_MethodName: DecreaseQuality
         m_Mode: 1
@@ -11003,7 +11237,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 0.7692308
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -11337,7 +11571,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
+      - m_Target: {fileID: 564211599}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: MuteVoice
         m_Mode: 0
@@ -11510,7 +11744,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1046491477}
+      - m_Target: {fileID: 564211599}
         m_TargetAssemblyTypeName: BNF.UI.Configure.BNF_AudioConfigurator, Assembly-CSharp
         m_MethodName: MuteFX
         m_Mode: 0
