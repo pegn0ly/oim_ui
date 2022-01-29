@@ -50,9 +50,9 @@ namespace BNF.UI.Configure
 
         private readonly string VOLUME_TYPE_FX = "Effects";
 
-        private readonly float LOWEST_VOLUME = -50f;
+        private readonly float LOWEST_VOLUME = -80f;
 
-        private readonly float HIGHEST_VOLUME = 15f;
+        private readonly float HIGHEST_VOLUME = 20f;
 
         private Dictionary<string, SavedVolumeConfiguration> SavedVolumes;
 
@@ -125,7 +125,7 @@ namespace BNF.UI.Configure
         // Назначить ивенты сохранения уровней звука в конфиг; загрузить сохраненные уровни.
         private void Start()
         {
-            MasterVolumeChanged += (volume) => AudioListener.volume = volume;
+            MasterVolumeChanged += (volume) => AudioListener.volume = SavedVolumes[VOLUME_TYPE_MASTER].IsMuted ? 0 : volume;
             MasterVolumeMuted += (mute) => AudioListener.volume = mute == true ? 0 : SavedVolumes[VOLUME_TYPE_MASTER].Volume;
 
             MasterVolumeChanged += (volume) => SaveVolume(VOLUME_TYPE_MASTER, volume);
